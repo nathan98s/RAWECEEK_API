@@ -4,13 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Driver {
+public class Drivers {
     @Id
     private Integer drivernumber;
     private String drivername;
     private String team;
     private String url;
-
 
     public Integer getDrivernumber() {
         return drivernumber;
