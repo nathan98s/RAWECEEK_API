@@ -21,8 +21,9 @@ public class DriverController {
     private DriversService driversService;
 
     @GetMapping(path="/driverById")
-    public @ResponseBody Optional<Drivers> getDrivers(@RequestParam Integer id){
-        return Optional.of(driversService.getDriverByDriverNumber(id).orElse(new Drivers()));
+    public @ResponseBody Driver getDrivers(@RequestParam(name="id") String id){
+        System.out.println("In controller for getting driver by ID");
+        return Optional.of(driversService.getDriverByDriverNumber(id)).orElse(new Driver());
     }
 
     @GetMapping(path="/drivers/")
@@ -31,7 +32,7 @@ public class DriverController {
     }
 
     @GetMapping(path="/getDriversByTeam")
-    public @ResponseBody Iterable<Drivers> getDriversByTeam(@RequestParam String team){
+    public @ResponseBody Iterable<Drivers> getDriversByTeam(@RequestParam(name="team") String team){
         return driversService.getDriversByTeam(team);
     }
 

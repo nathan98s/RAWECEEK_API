@@ -6,12 +6,12 @@ import java.io.Serializable;
 
 public class raceResultId implements Serializable {
     private String racedate;
-    private Integer drivernumber;
+    private String drivernumber;
 
     public raceResultId(){
 
     }
-    public raceResultId(String racedate, Integer drivernumber) {
+    public raceResultId(String racedate, String drivernumber) {
         this.racedate = racedate;
         this.drivernumber = drivernumber;
     }

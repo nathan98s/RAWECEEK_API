@@ -18,16 +18,41 @@ import java.util.Optional;
 @Service
 public class DriversService {
 
+    private Integer convertPositionToPoints(Integer position){
+        System.out.println(position);
+        return switch (position) {
+            case 1 -> 25;
+            case 2 -> 18;
+            case 3 -> 15;
+            case 4 -> 12;
+            case 5 -> 10;
+            case 6 -> 8;
+            case 7 -> 6;
+            case 8 -> 4;
+            case 9 -> 2;
+            case 10 -> 1;
+            default -> 0;
+        };
+    }
+
     @Autowired
     private DriversRepository driverRepo;
     @Autowired
     private RaceResultsRepository raceRepo;
 
-    public Optional<Drivers> getDriverByDriverNumber(Integer id){
-        // TODO need to think about approach for finding id's and adding to driver POJO
-        Optional<RaceResults> driverPoints = raceRepo.findById(id);
-        System.out.println(driverPoints);
-        return driverRepo.findById(id);
+    public Driver getDriverByDriverNumber(String id){
+        Iterable<RaceResults> driverPoints = raceRepo.findResultsByDriverNumber(id);
+        Optional<Drivers> driverDbObject = driverRepo.findById(Integer.parseInt(id));
+        Integer driverTotal = 0;
+        for (RaceResults r : driverPoints){
+            driverTotal+=convertPositionToPoints(r.getDriverposition());
+        }
+        Driver returnObject = null;
+        if(driverDbObject.isPresent()){
+            Drivers currentDriver = driverDbObject.get();
+            returnObject = new Driver(currentDriver.getDrivername(), currentDriver.getTeam(), currentDriver.getDrivernumber(), currentDriver.getUrl(), driverTotal);
+        }
+        return returnObject;
     }
 
     public List<Driver> getAllDrivers(){

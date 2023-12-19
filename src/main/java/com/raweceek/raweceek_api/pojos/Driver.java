@@ -3,11 +3,19 @@ package com.raweceek.raweceek_api.pojos;
 public class Driver {
     private String name;
     private String team;
-    private String number;
+    private Integer number;
     private String url;
     private Integer points;
 
-    public Driver(String name, String team, String number, String url, Integer points) {
+    public Driver(){
+        this.name = null;
+        this.team = null;
+        this.number = null;
+        this.url = null;
+        this.points = null;
+    }
+
+    public Driver(String name, String team, Integer number, String url, Integer points) {
         this.name = name;
         this.team = team;
         this.number = number;
@@ -31,11 +39,11 @@ public class Driver {
         this.team = team;
     }
 
-    public String getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 

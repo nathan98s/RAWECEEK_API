@@ -14,7 +14,7 @@ public class RaceResults {
     private String racedate;
     @Id
     private String drivernumber;
-    private String driverposition;
+    private Integer driverposition;
 
     public String getDrivernumber() {
         return drivernumber;
@@ -32,11 +32,11 @@ public class RaceResults {
         this.racedate = racedate;
     }
 
-    public String getDriverposition() {
+    public Integer getDriverposition() {
         return driverposition;
     }
 
-    public void setDriverposition(String driverposition) {
+    public void setDriverposition(Integer driverposition) {
         this.driverposition = driverposition;
     }
 }
