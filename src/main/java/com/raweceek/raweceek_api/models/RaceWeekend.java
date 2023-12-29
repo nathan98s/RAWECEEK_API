@@ -10,6 +10,8 @@ import jakarta.persistence.Table;
 public class RaceWeekend {
     @Id
     private String racedate;
+
+    private String quali;
     private String name;
     private String race;
     private String fp1;
@@ -19,6 +21,14 @@ public class RaceWeekend {
     private String sprintshootout;
     private String url;
     private String resultsurl;
+
+    public String getQuali() {
+        return quali;
+    }
+
+    public void setQuali(String quali) {
+        this.quali = quali;
+    }
 
     public String getRaceDate() {
         return racedate;
